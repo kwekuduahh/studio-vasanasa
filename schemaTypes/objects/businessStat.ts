@@ -29,5 +29,11 @@ export const businessStat = defineType({
       title: 'title',
       subtitle: 'statisticsNumber',
     },
+    prepare({title, subtitle}) {
+      return {
+        title,
+        subtitle,
+      }
+    },
   },
 })

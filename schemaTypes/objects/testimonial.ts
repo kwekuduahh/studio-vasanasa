@@ -35,7 +35,16 @@ export const testimonial = defineType({
   ],
   preview: {
     select: {
-      title: 'Testimonial',
+      title: 'testorTitle',
+      subtitle: 'testorTitleCaption',
+      media: 'testorImage',
+    },
+    prepare({title, subtitle, media}) {
+      return {
+        title,
+        subtitle,
+        media,
+      }
     },
   },
 })

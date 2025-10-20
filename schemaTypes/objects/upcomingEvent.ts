@@ -8,7 +8,7 @@ export const upcomingEvent = defineType({
     defineField({
       name: 'eventsDate',
       title: 'Event Date',
-      type: 'date',
+      type: 'datetime',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -17,24 +17,16 @@ export const upcomingEvent = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'eventTime',
-      title: 'Event Time',
-      type: 'string',
-      description: 'e.g., "6:00 PM - 8:00 PM"',
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
       date: 'eventsDate',
       location: 'eventsLocation',
-      time: 'eventTime',
     },
-    prepare({date, location, time}) {
+    prepare({date, location}) {
       return {
         title: location,
-        subtitle: `${date} at ${time}`,
+        subtitle: `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`,
       }
     },
   },

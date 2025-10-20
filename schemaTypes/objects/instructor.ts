@@ -30,7 +30,6 @@ export const instructor = defineType({
       name: 'instructorBio',
       title: 'Instructor Bio',
       type: 'text',
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

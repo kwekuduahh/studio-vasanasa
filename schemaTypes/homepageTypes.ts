@@ -153,28 +153,8 @@ export const homepageType = defineType({
     defineField({
       name: 'upcomingEventsSection',
       title: 'Upcoming Events Section',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'body',
-          title: 'Body',
-          type: 'text',
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'events',
-          title: 'Events',
-          type: 'array',
-          of: [{type: 'upcomingEvent'}],
-          validation: (Rule) => Rule.required().length(3),
-        }),
-      ],
+      type: 'array',
+      of: [{type: 'upcomingEvent'}],
     }),
 
     // Testimonials Section
@@ -186,4 +166,14 @@ export const homepageType = defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'heroSection.heroTitle',
+    },
+    prepare({title}) {
+      return {
+        title,
+      }
+    },
+  },
 })
